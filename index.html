@@ -1,0 +1,713 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>ElevateWP</title>
+<meta name="description" content="Professional WordPress developer portfolio — theme & plugin development, speed, SEO, WooCommerce." />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.waves.min.js"></script>
+<!-- GSAP for refined entrance timing (optional, reliable CDN) -->
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<!-- WHATSAPP FLOATING ICON -->
+<a href="https://wa.me/923000000000" target="_blank" 
+   style="position:fixed;left:20px;bottom:20px;z-index:100;background:#25D366;border-radius:50%;width:56px;height:56px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 20px rgba(0,0,0,0.4);animation:breath 2s ease-in-out infinite;">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:28px;height:28px;display:block;">
+</a>
+
+
+
+<!-- INLINE BREATHING ANIMATION -->
+<style>
+@keyframes breath {
+  0% { transform:scale(1); box-shadow:0 0 20px rgba(37,211,102,0.6); }
+  50% { transform:scale(1.08); box-shadow:0 0 30px rgba(37,211,102,0.85); }
+  100% { transform:scale(1); box-shadow:0 0 20px rgba(37,211,102,0.6); }
+}
+</style>
+
+<style>
+  
+/* ============================
+   Clean Professional Template
+   Single-file, inline CSS
+   ============================ */
+
+:root{
+  --bg-1: #050618;
+  --bg-2: #07122a;
+  --card: rgba(255,255,255,0.03);
+  --muted: #97a9cc;
+  --accent-1: #6f4bff;
+  --accent-2: #2ec4ff;
+  --glass: rgba(255,255,255,0.03);
+  --radius: 14px;
+  --maxw: 1100px;
+  --text: #eaf4ff;
+  --shadow: rgba(2,6,23,0.55);
+}
+
+/* Reset */
+*,:before,:after{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(180deg,var(--bg-1),var(--bg-2));
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.45;
+  -webkit-text-size-adjust:100%;
+  padding-bottom:40px;
+}
+
+/* Utilities */
+.container{width:94%; max-width:var(--maxw); margin:0 auto}
+.row{display:flex; gap:12px; align-items:center}
+.col{display:flex; flex-direction:column}
+.center{text-align:center}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+.kicker{font-weight:700; font-size:12px; color:var(--muted); letter-spacing:0.12em; text-transform:uppercase}
+
+/* Header */
+.header{
+  position:sticky; top:12px; z-index:50; display:flex; justify-content:center;
+}
+.navbar{
+  width:94%; max-width:var(--maxw); margin:0 auto; display:flex; align-items:center; justify-content:space-between;
+  padding:10px 14px; border-radius:12px; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border:1px solid rgba(255,255,255,0.03); box-shadow:0 8px 24px var(--shadow); backdrop-filter: blur(6px);
+}
+.brand{display:flex; gap:12px; align-items:center}
+.logo{width:56px;height:56px;border-radius:12px;display:grid;place-items:center;font-weight:800;color:#07102a;background:linear-gradient(135deg,var(--accent-1),var(--accent-2))}
+.brand h1{font-size:16px;margin:0}
+.brand p{margin:0;font-size:12px;color:var(--muted)}
+
+.nav-links{display:flex; gap:10px; align-items:center}
+.nav-links a{color:rgba(230,240,255,0.92); text-decoration:none; padding:8px 12px; border-radius:10px; font-weight:600}
+.nav-links a:hover{background:rgba(255,255,255,0.02); transform:translateY(-3px); transition:all .18s}
+
+/* CTA */
+.btn{
+  display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:10px; font-weight:800; cursor:pointer; border:none;
+}
+.btn-primary{background:linear-gradient(90deg,var(--accent-1),var(--accent-2)); color:#07102a; box-shadow:0 8px 28px rgba(110,78,255,0.12)}
+.btn-ghost{background:transparent; border:1px solid rgba(255,255,255,0.04); color:var(--muted)}
+
+/* Hero */
+.hero{
+  margin-top:28px; padding:36px; border-radius:18px; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border:1px solid rgba(255,255,255,0.03); box-shadow: 0 30px 90px var(--shadow); backdrop-filter: blur(6px);
+}
+.hero-grid{display:grid; grid-template-columns: 1fr 380px; gap:28px; align-items:center}
+.hero h1{font-size:38px; margin:10px 0; line-height:1.02}
+.hero h1 .accent{background:linear-gradient(90deg,var(--accent-1),var(--accent-2)); -webkit-background-clip:text; color:transparent; font-weight:900}
+.lead{color:#d4e9ff; font-size:15px; max-width:640px}
+
+/* mini-stats */
+.stats{display:flex; gap:12px; margin-top:18px; flex-wrap:wrap}
+.stat{background:rgba(255,255,255,0.02); border-radius:12px; padding:10px 12px; border:1px solid rgba(255,255,255,0.02); min-width:110px}
+.stat .num{font-weight:900; font-size:18px}
+
+/* Right card */
+.card{
+  padding:18px; border-radius:14px; background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01)); border:1px solid rgba(255,255,255,0.03);
+  box-shadow:0 18px 46px rgba(2,6,23,0.6);
+}
+.profile{display:flex; gap:12px; align-items:center}
+.avatar{width:72px;height:72px;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.04)}
+.avatar img{width:100%;height:100%;object-fit:cover}
+
+/* Sections */
+.section{margin-top:36px; padding:26px; border-radius:14px; background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent); border:1px solid rgba(255,255,255,0.02)}
+.section .title{font-size:20px; font-weight:900}
+
+/* Services */
+.services-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+.service{
+  background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));
+  border-radius:12px; padding:18px; border:1px solid rgba(255,255,255,0.03); box-shadow:0 12px 36px rgba(2,6,23,0.45);
+  transition: transform .28s, box-shadow .28s;
+  cursor:pointer; transform-style:preserve-3d;
+}
+.service:hover{transform:translateY(-8px)}
+.service .icon{width:48px;height:48px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent-1),var(--accent-2)); color:#07102a; font-weight:800; margin-bottom:10px}
+
+/* Projects */
+.projects-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+.project{position:relative;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.04); min-height:180px; background:rgba(255,255,255,0.01)}
+.project img{width:100%;height:100%;object-fit:cover; display:block; transition: transform .5s}
+.project:hover img{transform:scale(1.06)}
+.project .meta{position:absolute; left:12px; bottom:12px; color:white; font-weight:800; text-shadow:0 6px 18px rgba(0,0,0,0.6)}
+.project .badge{position:absolute; right:12px; top:12px; padding:6px 8px; background:rgba(0,0,0,0.35); border-radius:8px; font-weight:700}
+
+/* Process */
+.process-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:12px}
+.step{background:rgba(255,255,255,0.02); padding:14px; border-radius:10px; text-align:center; border:1px solid rgba(255,255,255,0.02)}
+
+/* FAQ */
+.faq{display:grid; gap:8px}
+.faq details{background:rgba(255,255,255,0.01); padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,0.02)}
+.faq summary{cursor:pointer; font-weight:700}
+
+/* Testimonials */
+.testimonials{display:flex; gap:12px; overflow:hidden}
+.testimonial{flex:0 0 300px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:16px;border-radius:12px; border:1px solid rgba(255,255,255,0.03)}
+
+/* Counters */
+.counters{display:flex; gap:18px; flex-wrap:wrap}
+.counter{background:rgba(255,255,255,0.02); padding:12px 16px; border-radius:12px; border:1px solid rgba(255,255,255,0.02)}
+
+/* Contact */
+.contact-form{display:grid; gap:12px; max-width:720px}
+.contact-form input, .contact-form textarea{
+  padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,0.06); background:rgba(255,255,255,0.015); color:var(--text)
+}
+.contact-form button{padding:12px 16px; border-radius:10px; border:none; cursor:pointer}
+
+/* Footer */
+.footer{margin-top:40px; padding:28px; text-align:center; color:var(--muted)}
+
+/* Responsive */
+@media (max-width:1000px){
+  .hero-grid{grid-template-columns:1fr}
+  .projects-grid{grid-template-columns:repeat(2,1fr)}
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .process-grid{grid-template-columns:repeat(2,1fr)}
+  .stage-right{order:2}
+}
+@media (max-width:640px){
+  .projects-grid{grid-template-columns:1fr}
+  .services-grid{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .brand h1{display:none}
+  .brand p{display:block}
+  .hero h1{font-size:28px}
+}
+#bg-animation {
+  position: fixed;   /* hamesha background me chipka rahe */
+  top: 0; 
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;       /* iska matlab sab content iske upar rahega */
+}
+
+
+/* Focus for accessibility */
+a:focus, button:focus, input:focus, textarea:focus{outline:3px solid rgba(111,75,255,0.14); outline-offset:4px; border-radius:8px}
+</style>
+</head>
+<body>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+<div id="particles-js"></div>
+
+<style>
+  #particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #0d1117;  /* dark bg */
+    z-index: -1;
+  }
+</style>
+
+<script>
+particlesJS("particles-js", {
+  "particles": {
+    "number": { "value": 120 },
+    "size": { "value": 3 },
+    "move": { "speed": 1 },
+    "line_linked": { "enable": true, "color": "#21759b" },
+    "color": { "value": "#ffffff" }
+  }
+});
+</script>
+
+  <!-- Header -->
+<header class="header" role="banner">
+  <nav class="navbar container" role="navigation" aria-label="Main navigation">
+    
+    <!-- Brand/Logo Section -->
+    <div class="brand">
+      <!-- Replace text logo with image -->
+      <div class="logo" aria-hidden="true">
+        <img src="piclumen-1759530043295-removebg-preview.png" alt="ElevateWP Logo" style="height:50px; width:auto;">
+      </div>
+      <div>
+        <h1>ElevateWP</h1>
+        <p class="small muted">Themes • Plugins • Performance</p>
+      </div>
+    </div>
+
+    <!-- Navigation Links -->
+    <div class="nav-links" role="menubar" aria-label="Main links">
+      <a href="#home" role="menuitem">Home</a>
+      <a href="#about" role="menuitem">About</a>
+      <a href="#services" role="menuitem">Services</a>
+      <a href="#projects" role="menuitem">Projects</a>
+      <a href="#process" role="menuitem">Process</a>
+      <a href="#faq" role="menuitem">FAQ</a>
+      <a href="#contact" class="btn btn-primary" role="menuitem">Contact</a>
+    </div>
+
+  </nav>
+</header>
+
+
+  <main id="home" class="container" role="main" aria-labelledby="hero-title">
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-grid">
+        <div>
+          <div class="kicker">WordPress Developer</div>
+          <h1 id="hero-title">I build lightning-fast <span class="accent">WordPress</span> Websites — <span id="hero-typed" aria-hidden="true"></span></h1>
+          <p class="lead">Theme development, plugin integrations, speed & SEO. I deliver production-ready WordPress solutions — from custom themes to WooCommerce stores.</p>
+
+          <!-- <div class="stats" aria-hidden="false">
+            <div class="stat"><div class="num">120+</div><div class="muted small">Projects</div></div>
+            <div class="stat"><div class="num">95%</div><div class="muted small">Client satisfaction</div></div>
+            <div class="stat"><div class="num">4.9★</div><div class="muted small">Avg rating</div></div>
+          </div> -->
+
+          <div style="margin-top:18px">
+            <button id="hireBtn" class="btn btn-primary">Hire me</button>
+            <button id="workBtn" class="btn btn-ghost">View projects</button>
+          </div>
+        </div>
+
+        <aside class="card stage-right" role="complementary" aria-labelledby="profile-name">
+          <div class="profile">
+            <div class="avatar"><img src="maazpng.png" alt="Profile photo"></div>
+            <div>
+              <div id="profile-name" style="font-weight:800">Maaz Khan</div>
+              <div class="muted small">WordPress Developer • Theme & Plugin Expert</div>
+              <div style="margin-top:8px">
+                <button class="btn btn-primary" id="contactQuick">Contact</button>
+                <button class="btn btn-ghost" id="downloadCV">Resume</button>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:12px" class="muted small">Available for freelance & long-term collaborators. I provide maintenance & retainer packages.</div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section" aria-labelledby="about-title">
+      <div class="section-head">
+        <div>
+          <div class="title" id="about-title">About Me</div>
+          <div class="small muted">Who I am and what I do</div>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns: 1fr 320px; gap:20px; align-items:start;">
+        <div>
+          <p class="muted">I specialize in WordPress theme & plugin development, performance optimization, and SEO-friendly builds. I work with agencies and direct clients to ship secure, maintainable, and fast WordPress solutions.</p>
+
+          <h4 style="margin-top:14px">Core Expertise</h4>
+          <ul style="margin-top:8px; line-height:1.6">
+            <li>Custom theme development</li>
+            <li>Plugin architecture & integrations</li>
+            <li>WooCommerce customization & payment flows</li>
+            <li>Performance tuning & Core Web Vitals optimization</li>
+            <li>Security hardening & accessibility</li>
+          </ul>
+        </div>
+
+        <!-- <aside>
+          <div class="card">
+            <h4 style="margin:0 0 8px 0">Quick Facts</h4>
+            <div class="counters" style="margin-top:8px; gap:8px">
+              <div class="counter"><div style="font-weight:800;font-size:18px">120+</div><div class="muted small">Projects</div></div>
+              <div class="counter"><div style="font-weight:800;font-size:18px">8</div><div class="muted small">Years experience</div></div>
+            </div>
+            <div style="margin-top:10px" class="muted small">I enjoy turning business goals into technical specs and shipping clean, tested code.</div>
+          </div>
+        </aside> -->
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="section" aria-labelledby="services-title">
+      <div class="section-head">
+        <div>
+          <div class="title" id="services-title">Services</div>
+          <div class="small muted">What I can help you with</div>
+        </div>
+      </div>
+
+      <div class="services-grid" role="list" aria-label="Services">
+        <article class="service" role="listitem" tabindex="0">
+          <div class="icon">TD</div>
+          <h4 style="margin-top:6px">Theme Development</h4>
+          <p class="muted small">Custom themes, Gutenberg blocks, and easy-to-use options panels.</p>
+        </article>
+
+        <article class="service" role="listitem" tabindex="0">
+          <div class="icon">PD</div>
+          <h4 style="margin-top:6px">Plugin Development</h4>
+          <p class="muted small">Custom plugins, WP-CLI scripts, and REST API endpoints.</p>
+        </article>
+
+        <article class="service" role="listitem" tabindex="0">
+          <div class="icon">WC</div>
+          <h4 style="margin-top:6px">WooCommerce</h4>
+          <p class="muted small">Checkout flows, subscriptions, integrations & optimizations.</p>
+        </article>
+
+        <article class="service" role="listitem" tabindex="0">
+          <div class="icon">SP</div>
+          <h4 style="margin-top:6px">Speed & SEO</h4>
+          <p class="muted small">Core Web Vitals, caching, image optimization, and structured data.</p>
+        </article>
+
+        <article class="service" role="listitem" tabindex="0">
+          <div class="icon">SE</div>
+          <h4 style="margin-top:6px">Site Security</h4>
+          <p class="muted small">Hardened installs, secure plugin updates, permissions audit.</p>
+        </article>
+
+        <article class="service" role="listitem" tabindex="0">
+          <div class="icon">TR</div>
+          <h4 style="margin-top:6px">Training</h4>
+          <p class="muted small">Developer handovers, documentation & editor training sessions.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section" aria-labelledby="projects-title">
+      <div class="section-head">
+        <div>
+          <div class="title" id="projects-title">Selected Projects</div>
+          <div class="small muted">A curated selection of live sites & case snapshots</div>
+        </div>
+        <div>
+          <button class="btn btn-ghost" id="filterAll" aria-pressed="true">All</button>
+          <button class="btn btn-ghost" id="filterDesign">Design</button>
+          <button class="btn btn-ghost" id="filterSEO">SEO</button>
+        </div>
+      </div>
+
+      <div class="projects-grid" id="projectsGrid" aria-live="polite">
+        <!-- JS will populate -->
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section id="process" class="section" aria-labelledby="process-title">
+      <div class="section-head">
+        <div>
+          <div class="title" id="process-title">Process</div>
+          <div class="small muted">How I work — simple & predictable</div>
+        </div>
+      </div>
+
+      <div class="process-grid" aria-hidden="false">
+        <div class="step"><div style="font-weight:800">Discovery</div><div class="muted small">Requirements & scope</div></div>
+        <div class="step"><div style="font-weight:800">Design</div><div class="muted small">Wireframes & UI</div></div>
+        <div class="step"><div style="font-weight:800">Build</div><div class="muted small">Theme & plugin dev</div></div>
+        <div class="step"><div style="font-weight:800">Launch</div><div class="muted small">Deploy & monitor</div></div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section" aria-labelledby="faq-title">
+      <div class="section-head">
+        <div>
+          <div class="title" id="faq-title">FAQ</div>
+          <div class="small muted">Short answers to common questions</div>
+        </div>
+      </div>
+
+      <div class="faq" role="list">
+        <details class="faq-item"><summary>How much does a site cost?</summary><div class="muted small" style="margin-top:8px">Depends on scope — contact me for a tailored quote.</div></details>
+        <details class="faq-item"><summary>Do you work with existing themes?</summary><div class="muted small" style="margin-top:8px">Yes — customization, child themes, and performance tuning are common.</div></details>
+        <details class="faq-item"><summary>Do you offer maintenance?</summary><div class="muted small" style="margin-top:8px">Yes — monthly retainers for updates, backups & performance monitoring.</div></details>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section" aria-labelledby="testi-title">
+      <div class="section-head">
+        <div>
+          <div class="title" id="testi-title">Testimonials</div>
+          <div class="small muted">What clients say</div>
+        </div>
+      </div>
+
+      <div class="testimonials" id="testimonials">
+        <!-- populated by JS -->
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+<section id="contact" class="section" aria-labelledby="contact-title">
+  <div class="section-head">
+    <div>
+      <div class="title" id="contact-title">Contact</div>
+      <div class="small muted">Let’s discuss your WordPress project</div>
+    </div>
+  </div>
+
+  <form id="contactForm" 
+        class="contact-form" 
+        aria-label="Contact form" 
+        action="https://formspree.io/f/xdkwzred" 
+        method="POST">
+
+    <input id="name" name="name" type="text" placeholder="Your name" required>
+    <input id="email" name="email" type="email" placeholder="your@email.com" required>
+    <input id="company" name="company" type="text" placeholder="Company (optional)">
+    <textarea id="message" name="message" placeholder="Tell me about the project..." rows="6" required></textarea>
+
+    <!-- Hidden (optional) -->
+    <input type="hidden" name="_subject" value="New Portfolio Contact!">
+    <input type="hidden" name="_captcha" value="false">
+
+    <div style="display:flex; gap:8px; justify-content:flex-end; align-items:center">
+      <button type="reset" class="btn btn-ghost">Reset</button>
+      <button type="submit" class="btn btn-primary">Send Message</button>
+    </div>
+
+    <div id="contactFeedback" class="muted small" aria-live="polite" style="margin-top:8px"></div>
+  </form>
+</section>
+
+
+
+    <footer class="footer">
+      <div style="font-weight:700">© <span id="yr"></span> Maaz Khan</div>
+      <div class="small muted" style="margin-top:6px">Built with attention to performance, accessibility and good UI — ready to convert.</div>
+    </footer>
+  </main>
+
+<script>
+/* ============================
+   Inline JS — interactions & data
+   Clean, minimal, robust
+   ============================ */
+
+(() => {
+  // Tiny selectors
+  const $ = (s, ctx=document) => ctx.querySelector(s);
+  const $$ = (s, ctx=document) => Array.from((ctx||document).querySelectorAll(s));
+  const el = (tag, props={}, children=[]) => {
+    const e = document.createElement(tag);
+    for(const k in props) { if(k === 'class') e.className = props[k]; else e.setAttribute(k, props[k]); }
+    (Array.isArray(children) ? children : [children]).flat().forEach(c => { if(typeof c === 'string') e.appendChild(document.createTextNode(c)); else if(c) e.appendChild(c); });
+    return e;
+  };
+
+  // Populate year
+  $('#yr').textContent = new Date().getFullYear();
+
+  // Demo data (replace with your real projects/testimonials)
+  const PROJECTS = [
+    {id:'pr-1',title:'Local Clinic Website',tags:['design','seo'],img:'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1600&auto=format&fit=crop',desc:'Custom WordPress theme, appointment integration, speed optimized.'},
+    {id:'pr-2',title:'Ecommerce Store',tags:['woocommerce','design'],img:'https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1600&auto=format&fit=crop',desc:'WooCommerce + subscription flows, custom templates.'},
+    {id:'pr-3',title:'Startup Landing',tags:['ads','design'],img:'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1600&auto=format&fit=crop',desc:'Landing page for paid campaigns with fast load and analytics.'},
+    {id:'pr-4',title:'Agency Rebrand',tags:['design'],img:'https://images.unsplash.com/photo-1492724441997-5dc865305da7?q=80&w=1600&auto=format&fit=crop',desc:'Brand refresh and component-based theme.'},
+    {id:'pr-5',title:'Directory Network',tags:['seo','backend'],img:'https://images.unsplash.com/photo-1559526324-593bc073d938?q=80&w=1600&auto=format&fit=crop',desc:'Multi-location directory with citation automation.'},
+    {id:'pr-6',title:'B2B Software Site',tags:['seo'],img:'https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1600&auto=format&fit=crop',desc:'SEO-first architecture with documented content templates.'}
+  ];
+
+  const TESTIMONIALS = [
+    {name:'Aisha K', role:'Founder',img:'https://randomuser.me/api/portraits/women/44.jpg',text:'Delivered fast and on budget. Highly recommend.'},
+    {name:'Omar R', role:'CMO',img:'https://randomuser.me/api/portraits/men/32.jpg',text:'Great communication, excellent SEO gains.'},
+    {name:'Sana P', role:'Ecom Owner',img:'https://randomuser.me/api/portraits/women/65.jpg',text:'Checkout improvements increased revenue.'}
+  ];
+
+  // Render projects
+  const projectsGrid = $('#projectsGrid');
+  function renderProjects(list=PROJECTS){
+    projectsGrid.innerHTML = '';
+    list.forEach((p, i) => {
+      const card = el('article', {class:'project', tabindex:0, 'data-id':p.id});
+      card.innerHTML = `<img src="${p.img}" alt="${p.title}"><div class="meta">${escapeHtml(p.title)}</div><div class="badge">${p.tags.join(' • ')}</div>`;
+      card.addEventListener('click', () => openProject(p));
+      card.addEventListener('keydown', (e) => { if(e.key === 'Enter') openProject(p); });
+      projectsGrid.appendChild(card);
+    });
+  }
+  function escapeHtml(s){ return (s+'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+  renderProjects();
+
+  // Simple filter handlers
+  $('#filterAll').addEventListener('click', ()=> { setActiveFilterButton('#filterAll'); renderProjects(); });
+  $('#filterDesign').addEventListener('click', ()=> { setActiveFilterButton('#filterDesign'); renderProjects(PROJECTS.filter(p=>p.tags.includes('design'))); });
+  $('#filterSEO').addEventListener('click', ()=> { setActiveFilterButton('#filterSEO'); renderProjects(PROJECTS.filter(p=>p.tags.includes('seo'))); });
+  function setActiveFilterButton(selector){
+    $$('.btn-ghost').forEach(b=>b.classList.remove('active'));
+    const btn = $(selector); if(btn) btn.classList.add('active');
+  }
+
+  // Render testimonials
+  const testiWrap = $('#testimonials');
+  function renderTestimonials(){
+    testiWrap.innerHTML = '';
+    TESTIMONIALS.forEach(t=>{
+      const c = el('div', {class:'testimonial'});
+      c.innerHTML = `<div style="display:flex;gap:10px;align-items:center"><img src="${t.img}" alt="${t.name}" style="width:48px;height:48px;border-radius:50%;object-fit:cover"><div><strong>${escapeHtml(t.name)}</strong><div class="muted small">${escapeHtml(t.role)}</div></div></div><div class="testimonial-text muted small" style="margin-top:10px">"${escapeHtml(t.text)}"</div>`;
+      testiWrap.appendChild(c);
+    });
+  }
+  renderTestimonials();
+
+  // Simple modal (project quick view)
+  let modalEl = null;
+  function openProject(p){
+    if(modalEl) return; // one modal at a time
+    modalEl = el('div', {class:'project-modal', style:"position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:9999;background:rgba(2,6,23,0.8)"});
+    const card = el('div',{style:'width:92%;max-width:1000px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:18px;border-radius:12px;display:grid;grid-template-columns:1fr 320px;gap:12px;border:1px solid rgba(255,255,255,0.03)'});
+    card.innerHTML = `<div style="border-radius:10px;overflow:hidden"><img src="${p.img}" alt="${p.title}" style="width:100%;height:100%;object-fit:cover"></div><aside style="display:flex;flex-direction:column;gap:8px"><h3 style="margin:0">${escapeHtml(p.title)}</h3><div class="muted small">${p.tags.join(' • ')}</div><p class="muted small">${escapeHtml(p.desc)}</p><div style="margin-top:auto"><button class="btn btn-primary" id="modalView">View case</button><button class="btn btn-ghost" id="modalClose" style="margin-left:8px">Close</button></div></aside>`;
+    modalEl.appendChild(card);
+    document.body.appendChild(modalEl);
+    $('#modalClose')?.addEventListener('click', closeModal);
+    $('#modalView')?.addEventListener('click', ()=> alert('Open full case study (demo)'));
+    modalEl.addEventListener('click', (e)=>{ if(e.target === modalEl) closeModal(); });
+    document.addEventListener('keydown', escClose);
+    // small entrance using GSAP if available
+    if(window.gsap) gsap.from(card, {y:30, autoAlpha:0, duration:0.45, ease:'power3.out'});
+  }
+  function closeModal(){
+    if(!modalEl) return;
+    const el = modalEl;
+    if(window.gsap) gsap.to(el.firstChild, {y:20, autoAlpha:0, duration:0.28, ease:'power2.in', onComplete: ()=> { el.remove(); modalEl=null; }});
+    else { el.remove(); modalEl=null; }
+    document.removeEventListener('keydown', escClose);
+  }
+  function escClose(e){ if(e.key === 'Escape') closeModal(); }
+
+  // Contact form basic validation (demo sends via alert)
+  $('#contactForm')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = $('#name').value.trim();
+    const email = $('#email').value.trim();
+    const msg = $('#message').value.trim();
+    const feedback = $('#contactFeedback');
+    if(!name || !email || !msg){ feedback.textContent = 'Please fill all required fields.'; feedback.style.color = 'salmon'; return; }
+    if(!/^[^@]+@[^@]+\.[^@]+$/.test(email)){ feedback.textContent = 'Please use a valid email.'; feedback.style.color = 'salmon'; return; }
+    // Demo behavior: show success + reset. Replace with fetch()/Xhr to send server-side.
+    feedback.textContent = 'Message sent — demo only. Integrate with your backend (mail server or service).';
+    feedback.style.color = 'lightgreen';
+    $('#contactForm').reset();
+  });
+
+  // Smooth scroll for nav
+  $$('.nav-links a').forEach(a=>{
+    a.addEventListener('click', (ev) => {
+      const href = a.getAttribute('href');
+      if(href && href.startsWith('#')){
+        ev.preventDefault(); const target = document.querySelector(href);
+        if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+      }
+    });
+  });
+
+  // Hero typed effect (lightweight)
+  (function typed(){
+    const elTyped = document.getElementById('hero-typed');
+    if(!elTyped) return;
+    const phrases = ['theme & plugin.', 'WooCommerce.', 'performance & SEO.', 'Gutenberg blocks.'];
+    let pi=0, ci=0, forward=true;
+    function step(){
+      const cur = phrases[pi];
+      if(forward){ ci++; elTyped.textContent = cur.slice(0,ci); if(ci === cur.length){ forward=false; setTimeout(step,1200); return; } }
+      else { ci--; elTyped.textContent = cur.slice(0,ci); if(ci===0){ forward=true; pi=(pi+1)%phrases.length } }
+      setTimeout(step, forward?90:28);
+    }
+    step();
+  })();
+
+  // Scroll reveal using IntersectionObserver (reliable & low-dep)
+  (function revealOnScroll(){
+    const items = $$('.section, .project, .service, .testimonial, .card');
+    items.forEach(it => { it.style.opacity = 0; it.style.transform = 'translateY(12px)'; });
+    const obs = new IntersectionObserver((entries, ob) => {
+      entries.forEach(en => {
+        if(en.isIntersecting){
+          const el = en.target;
+          // use GSAP if available else CSS transition
+          if(window.gsap){ gsap.to(el, {autoAlpha:1, y:0, duration:0.7, ease:'power3.out'}); }
+          else { el.style.transition = 'opacity .7s ease, transform .7s ease'; el.style.opacity = 1; el.style.transform = 'translateY(0)'; }
+          ob.unobserve(el);
+        }
+      });
+    }, {threshold:0.12});
+    items.forEach(i => obs.observe(i));
+  })();
+
+  // Tiny tilt effect for cards (pointer safe)
+  (function cardTilt(){
+    const tiltEls = $$('.service, .project');
+    tiltEls.forEach(card => {
+      card.addEventListener('pointermove', (e) => {
+        const r = card.getBoundingClientRect();
+        const px = (e.clientX - r.left)/r.width;
+        const py = (e.clientY - r.top)/r.height;
+        const rx = (py - 0.5) * 8;
+        const ry = (px - 0.5) * -12;
+        card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(6px)`;
+      });
+      card.addEventListener('pointerleave', () => card.style.transform = '');
+    });
+  })();
+
+  // Accessibility: make some elements keyboard-friendly (already set tabindex)
+  // Keyboard shortcuts
+  window.addEventListener('keydown', (e) => {
+    if(e.key === 'w' || e.key === 'W'){ document.querySelector('#projects')?.scrollIntoView({behavior:'smooth'}); }
+    if(e.key === '/'){ e.preventDefault(); $('#name')?.focus(); }
+    if(e.key === 'p' || e.key === 'P'){ const first = document.querySelector('.project'); if(first) first.click(); }
+  });
+
+  // Defensive: lazy-load images (simple)
+  (function lazyImages(){
+    const imgs = $$('img');
+    if('loading' in HTMLImageElement.prototype){
+      imgs.forEach(img => { img.loading = 'lazy'; });
+    } else {
+      // no-op: modern browsers support it; otherwise fallback libs could be added.
+    }
+  })();
+
+  // Small polish: wire quick buttons
+  $('#workBtn')?.addEventListener('click', ()=> document.querySelector('#projects')?.scrollIntoView({behavior:'smooth'}));
+  $('#hireBtn')?.addEventListener('click', ()=> document.querySelector('#contact')?.scrollIntoView({behavior:'smooth'}));
+  $('#contactQuick')?.addEventListener('click', ()=> document.querySelector('#contact')?.scrollIntoView({behavior:'smooth'}));
+  $('#downloadCV')?.addEventListener('click', ()=> alert('Download resume (demo)'));
+
+  // Minor graceful load: ensure projects tilt bindings after render
+  setTimeout(()=>{ /* rebind tilt for newly created .project */ cardTilt(); }, 400);
+
+  // END IIFE
+})();
+</script>
+<script>
+  VANTA.WAVES({
+    el: "#bg-animation",
+    mouseControls: true,
+    touchControls: true,
+    minHeight: 200.00,
+    minWidth: 200.00,
+    scale: 1.00,
+    scaleMobile: 1.00,
+    color: 0x21759b,
+    shininess: 50,
+    waveHeight: 20,
+    waveSpeed: 1.2
+  })
+</script>
+</body>
+
+</body>
+</html>
